@@ -9,6 +9,7 @@
 /home/bruno/Escritorio/Progrmacion2/tp6/programacion-2-trabajo-practico-6-Brunopiastre/business-service/src/main/java/com/example/businessservice/dto/ProductoResponse.java
 /home/bruno/Escritorio/Progrmacion2/tp6/programacion-2-trabajo-practico-6-Brunopiastre/business-service/src/main/java/com/example/businessservice/exception/ProductoNoEncontradoException.java
 /home/bruno/Escritorio/Progrmacion2/tp6/programacion-2-trabajo-practico-6-Brunopiastre/business-service/src/main/java/com/example/businessservice/dto/ProductoRequest.java
+/home/bruno/Escritorio/Progrmacion2/tp6/programacion-2-trabajo-practico-6-Brunopiastre/business-service/src/main/java/com/example/businessservice/controller/BusinessController.java
 /home/bruno/Escritorio/Progrmacion2/tp6/programacion-2-trabajo-practico-6-Brunopiastre/business-service/src/main/java/com/example/businessservice/dto/CategoriaDTO.java
 /home/bruno/Escritorio/Progrmacion2/tp6/programacion-2-trabajo-practico-6-Brunopiastre/business-service/src/main/java/com/example/businessservice/service/CategoriaBusinessService.java
 /home/bruno/Escritorio/Progrmacion2/tp6/programacion-2-trabajo-practico-6-Brunopiastre/business-service/src/main/java/com/example/businessservice/service/ProductoBusinessService.java

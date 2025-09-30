@@ -1,10 +1,12 @@
 /home/bruno/Escritorio/Progrmacion2/tp6/programacion-2-trabajo-practico-6-Brunopiastre/data-service/src/main/java/com/example/dataservice/repository/InventarioRepository.java
-/home/bruno/Escritorio/Progrmacion2/tp6/programacion-2-trabajo-practico-6-Brunopiastre/data-service/src/main/java/com/example/dataservice/DataServiceApplication.java
 /home/bruno/Escritorio/Progrmacion2/tp6/programacion-2-trabajo-practico-6-Brunopiastre/data-service/src/main/java/com/example/dataservice/service/ProductoService.java
 /home/bruno/Escritorio/Progrmacion2/tp6/programacion-2-trabajo-practico-6-Brunopiastre/data-service/src/main/java/com/example/dataservice/repository/CategoriaRepository.java
 /home/bruno/Escritorio/Progrmacion2/tp6/programacion-2-trabajo-practico-6-Brunopiastre/data-service/src/main/java/com/example/dataservice/service/CategoriaService.java
 /home/bruno/Escritorio/Progrmacion2/tp6/programacion-2-trabajo-practico-6-Brunopiastre/data-service/src/main/java/com/example/dataservice/entity/Producto.java
 /home/bruno/Escritorio/Progrmacion2/tp6/programacion-2-trabajo-practico-6-Brunopiastre/data-service/src/main/java/com/example/dataservice/entity/Inventario.java
+/home/bruno/Escritorio/Progrmacion2/tp6/programacion-2-trabajo-practico-6-Brunopiastre/data-service/src/main/java/com/example/dataservice/exception/GlobalExceptionHandler.java
+/home/bruno/Escritorio/Progrmacion2/tp6/programacion-2-trabajo-practico-6-Brunopiastre/data-service/src/main/java/com/example/dataservice/DataServiceApplication.java
+/home/bruno/Escritorio/Progrmacion2/tp6/programacion-2-trabajo-practico-6-Brunopiastre/data-service/src/main/java/com/example/dataservice/controller/DataController.java
 /home/bruno/Escritorio/Progrmacion2/tp6/programacion-2-trabajo-practico-6-Brunopiastre/data-service/src/main/java/com/example/dataservice/repository/ProductoRepository.java
 /home/bruno/Escritorio/Progrmacion2/tp6/programacion-2-trabajo-practico-6-Brunopiastre/data-service/src/main/java/com/example/dataservice/exception/ResourceNotFoundException.java
 /home/bruno/Escritorio/Progrmacion2/tp6/programacion-2-trabajo-practico-6-Brunopiastre/data-service/src/main/java/com/example/dataservice/entity/Categoria.java
