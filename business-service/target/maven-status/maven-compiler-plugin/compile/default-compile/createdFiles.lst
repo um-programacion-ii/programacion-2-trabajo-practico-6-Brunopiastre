@@ -1,0 +1,14 @@
+com/example/businessservice/dto/InventarioDTO.class
+com/example/businessservice/client/DataServiceClient.class
+com/example/businessservice/service/CategoriaBusinessService.class
+com/example/businessservice/dto/CategoriaDTO.class
+com/example/businessservice/exception/ProductoNoEncontradoException.class
+com/example/businessservice/service/ProductoBusinessService.class
+com/example/businessservice/dto/ProductoDTO.class
+com/example/businessservice/dto/ProductoResponse.class
+com/example/businessservice/exception/ValidacionNegocioException.class
+com/example/businessservice/dto/ProductoRequest.class
+com/example/businessservice/controller/HealthController.class
+com/example/businessservice/BusinessServiceApplication.class
+com/example/businessservice/exception/MicroserviceCommunicationException.class
+com/example/businessservice/service/InventarioBusinessService.class
