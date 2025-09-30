@@ -1,3 +1,4 @@
+com/example/businessservice/controller/BusinessController.class
 com/example/businessservice/dto/InventarioDTO.class
 com/example/businessservice/client/DataServiceClient.class
 com/example/businessservice/service/CategoriaBusinessService.class
