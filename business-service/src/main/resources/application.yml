@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: business-service
+
+server:
+  port: 8080
+
+# URL del microservicio de datos
+# En Etapa 3 se manejará por profiles
+data:
+  service:
+    url: http://localhost:8081
