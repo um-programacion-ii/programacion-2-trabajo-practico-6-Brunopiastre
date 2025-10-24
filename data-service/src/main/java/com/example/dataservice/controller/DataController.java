@@ -2,6 +2,7 @@ package com.example.dataservice.controller;
 
 import com.example.dataservice.entity.Inventario;
 import com.example.dataservice.entity.Producto;
+import com.example.dataservice.entity.Categoria;
 import com.example.dataservice.service.CategoriaService;
 import com.example.dataservice.service.InventarioService;
 import com.example.dataservice.service.ProductoService;
@@ -60,6 +61,12 @@ public class DataController {
     @GetMapping("/productos/categoria/{nombre}")
     public List<Producto> obtenerProductosPorCategoria(@PathVariable String nombre) {
         return productoService.buscarPorCategoria(nombre);
+    }
+
+    // Categorias
+    @GetMapping("/categorias")
+    public List<Categoria> obtenerTodasLasCategorias() {
+        return categoriaService.obtenerTodas();
     }
 
     // Inventario
