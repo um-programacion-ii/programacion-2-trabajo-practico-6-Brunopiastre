@@ -33,7 +33,7 @@ public class BusinessController {
     }
 
     @GetMapping("/productos/{id}")
-    public ProductoDTO obtenerProductoPorId(@PathVariable Long id) {
+    public ProductoDTO obtenerProductoPorId(@PathVariable("id") Long id) {
         return productoBusinessService.obtenerProductoPorId(id);
     }
 
@@ -44,18 +44,18 @@ public class BusinessController {
     }
 
     @PutMapping("/productos/{id}")
-    public ProductoDTO actualizarProducto(@PathVariable Long id, @Valid @RequestBody ProductoRequest request) {
+    public ProductoDTO actualizarProducto(@PathVariable("id") Long id, @Valid @RequestBody ProductoRequest request) {
         return productoBusinessService.actualizarProducto(id, request);
     }
 
     @DeleteMapping("/productos/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void eliminarProducto(@PathVariable Long id) {
+    public void eliminarProducto(@PathVariable("id") Long id) {
         productoBusinessService.eliminarProducto(id);
     }
 
     @GetMapping("/productos/categoria/{nombre}")
-    public List<ProductoDTO> obtenerProductosPorCategoria(@PathVariable String nombre) {
+    public List<ProductoDTO> obtenerProductosPorCategoria(@PathVariable("nombre") String nombre) {
         return productoBusinessService.obtenerProductosPorCategoria(nombre);
     }
 

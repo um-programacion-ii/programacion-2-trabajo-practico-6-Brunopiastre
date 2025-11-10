@@ -12,27 +12,31 @@ import java.util.List;
 @FeignClient(name = "data-service", url = "${data.service.url}")
 public interface DataServiceClient {
 
-    @GetMapping("/data/productos")
-    List<ProductoDTO> obtenerTodosLosProductos();
+  // Productos
+  @GetMapping("/data/productos")
+  List<ProductoDTO> obtenerTodosLosProductos();
 
-    @GetMapping("/data/productos/{id}")
-    ProductoDTO obtenerProductoPorId(@PathVariable("id") Long id);
+  @GetMapping("/data/productos/{id}")
+  ProductoDTO obtenerProductoPorId(@PathVariable("id") Long id);
 
-    @PostMapping("/data/productos")
-    ProductoDTO crearProducto(@RequestBody ProductoRequest request);
+  @PostMapping("/data/productos")
+  ProductoDTO crearProducto(@RequestBody ProductoRequest request);
 
-    @PutMapping("/data/productos/{id}")
-    ProductoDTO actualizarProducto(@PathVariable("id") Long id, @RequestBody ProductoRequest request);
+  @PutMapping("/data/productos/{id}")
+  ProductoDTO actualizarProducto(@PathVariable("id") Long id, @RequestBody ProductoRequest request);
 
-    @DeleteMapping("/data/productos/{id}")
-    void eliminarProducto(@PathVariable("id") Long id);
+  @DeleteMapping("/data/productos/{id}")
+  void eliminarProducto(@PathVariable("id") Long id);
 
-    @GetMapping("/data/productos/categoria/{nombre}")
-    List<ProductoDTO> obtenerProductosPorCategoria(@PathVariable("nombre") String nombre);
+  @GetMapping("/data/productos/categoria/{nombre}")
+  List<ProductoDTO> obtenerProductosPorCategoria(@PathVariable("nombre") String nombre);
 
-    @GetMapping("/data/categorias")
-    List<CategoriaDTO> obtenerTodasLasCategorias();
+  // Categorías
+  @GetMapping("/data/categorias")
+  List<CategoriaDTO> obtenerTodasLasCategorias();
 
-    @GetMapping("/data/inventario/stock-bajo")
-    List<InventarioDTO> obtenerProductosConStockBajo();
+  // Inventario
+  @GetMapping("/data/inventario/stock-bajo")
+  List<InventarioDTO> obtenerProductosConStockBajo();
 }
+

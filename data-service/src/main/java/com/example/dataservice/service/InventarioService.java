@@ -1,5 +1,6 @@
 package com.example.dataservice.service;
 
+import com.example.dataservice.dto.InventarioDTO;
 import com.example.dataservice.entity.Inventario;
 import com.example.dataservice.entity.Producto;
 import com.example.dataservice.exception.ResourceNotFoundException;
@@ -70,9 +71,21 @@ public class InventarioService {
         inventarioRepository.deleteById(id);
     }
 
-    public List<Inventario> obtenerProductosConStockBajo() {
+    public List<InventarioDTO> obtenerProductosConStockBajo() {
         return inventarioRepository.findAll().stream()
                 .filter(inv -> inv.getStockMinimo() != null && inv.getCantidad() != null && inv.getCantidad() <= inv.getStockMinimo())
+                .map(this::toDTO)
                 .collect(Collectors.toList());
+    }
+
+    private InventarioDTO toDTO(Inventario inv) {
+        Long productoId = inv.getProducto() != null ? inv.getProducto().getId() : null;
+        return new InventarioDTO(
+                inv.getId(),
+                productoId,
+                inv.getCantidad(),
+                inv.getStockMinimo(),
+                inv.getFechaActualizacion()
+        );
     }
 }
