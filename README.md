@@ -109,8 +109,8 @@ Desarrollar un sistema de microservicios utilizando Spring Boot y Feign, impleme
 > 💡 **Nota**: Esta estimación considera la complejidad de configurar microservicios, comunicación entre servicios con Feign, múltiples bases de datos y Docker. El tiempo incluye el aprendizaje de conceptos de microservicios y Spring Cloud.
 
 ## 👨‍🎓 Información del Alumno
-- **Nombre y Apellido**: [Nombre y Apellido del Alumno]
-- **Legajo**: [Número de Legajo]
+- **Nombre y Apellido**: [Bruno Piastrellini]
+- **Legajo**: [62083]
 
 > ⚠️ **IMPORTANTE**: Este trabajo práctico se realiza **INDIVIDUALMENTE**. Aunque se utilizan herramientas de colaboración como Pull Requests y Code Review, estas son para mantener buenas prácticas de desarrollo y un historial ordenado. Todo el desarrollo debe ser realizado por el mismo estudiante.
 
@@ -1021,6 +1021,34 @@ cd business-service
 ./mvnw spring-boot:run -Dspring-boot.run.profiles=postgres
 ```
 
+### Troubleshooting: Error al correr con profile mysql
+Si al ejecutar `mvn spring-boot:run -Dspring-boot.run.profiles=mysql` obtienes un error de conexión como "Communications link failure" o "Conexión rehusada", sigue estos pasos:
+
+1. Asegúrate de tener MySQL levantado con Docker Compose:
+   - `docker compose up -d`
+   - Verifica estado y healthcheck: `docker compose ps`
+   - Espera a que el contenedor `microservices_mysql` aparezca como `healthy`.
+2. Verifica que el puerto 3306 esté escuchando en tu host:
+   - `docker compose logs -f mysql` para ver cuando MySQL termina de inicializar.
+3. Credenciales por defecto (coinciden con application.yml):
+   - DB: `microservices_db`
+   - USER: `microservices_user`
+   - PASS: `microservices_pass`
+4. URL de conexión por defecto en el servicio de datos:
+   - `jdbc:mysql://127.0.0.1:3306/microservices_db?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC`
+   - Tip: si en tu SO "localhost" resuelve a IPv6 (::1) puede fallar; por eso usamos `127.0.0.1` por defecto.
+   - Si estás ejecutando el microservicio DENTRO de otro contenedor Docker, usa `mysql` como host en lugar de `localhost`.
+5. Si aún falla, prueba conectarte manualmente desde tu host (si tienes cliente mysql instalado):
+   - `mysql -h 127.0.0.1 -P 3306 -u microservices_user -pmicroservices_pass microservices_db`
+6. Vuelve a intentar iniciar el servicio de datos:
+   - `cd data-service && ./mvnw spring-boot:run -Dspring-boot.run.profiles=mysql`
+
+Notas:
+- El pool Hikari está configurado con `initializationFailTimeout=0`, por lo que la app esperará a que MySQL esté disponible en lugar de fallar instantáneamente.
+- Agregamos la propiedad `hibernate.dialect` para MySQL para mejorar los mensajes de error si la base aún no está disponible.
+- Deshabilitamos el uso de metadatos JDBC en el arranque (`hibernate.temp.use_jdbc_metadata_defaults=false`) y establecimos `spring.jpa.hibernate.ddl-auto=none` en el profile mysql para evitar que Hibernate fuerce conexiones/DDL en el inicio; la app se conectará cuando MySQL esté lista.
+- El profile `postgres` también fue alineado con las credenciales usadas en docker-compose.
+
 ### Detener Bases de Datos
 ```bash
 # Detener contenedores
@@ -1190,3 +1218,5 @@ Cada archivo debe seguir este formato:
 ## 📝 Licencia
 
 Este trabajo es parte del curso de Programación II de Ingeniería en Informática. Uso educativo únicamente.
+
+
