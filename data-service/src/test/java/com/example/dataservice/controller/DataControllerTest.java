@@ -1,6 +1,6 @@
 package com.example.dataservice.controller;
 
-import com.example.dataservice.entity.Producto;
+import com.example.dataservice.dto.ProductoDTO;
 import com.example.dataservice.service.CategoriaService;
 import com.example.dataservice.service.InventarioService;
 import com.example.dataservice.service.ProductoService;
@@ -37,11 +37,7 @@ class DataControllerTest {
     @Test
     @DisplayName("GET /data/productos debe devolver 200 y lista de productos")
     void obtenerTodosLosProductos_ok() throws Exception {
-        Producto p1 = new Producto();
-        p1.setId(1L);
-        p1.setNombre("Prod 1");
-        p1.setDescripcion("Desc");
-        p1.setPrecio(new BigDecimal("10.00"));
+        ProductoDTO p1 = new ProductoDTO(1L, "Prod 1", "Desc", new BigDecimal("10.00"), null, null, null);
         Mockito.when(productoService.obtenerTodos()).thenReturn(List.of(p1));
 
         mockMvc.perform(get("/data/productos"))

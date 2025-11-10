@@ -1,8 +1,9 @@
 package com.example.dataservice.controller;
 
-import com.example.dataservice.entity.Inventario;
-import com.example.dataservice.entity.Producto;
-import com.example.dataservice.entity.Categoria;
+import com.example.dataservice.dto.CategoriaDTO;
+import com.example.dataservice.dto.InventarioDTO;
+import com.example.dataservice.dto.ProductoDTO;
+import com.example.dataservice.dto.ProductoRequest;
 import com.example.dataservice.service.CategoriaService;
 import com.example.dataservice.service.InventarioService;
 import com.example.dataservice.service.ProductoService;
@@ -18,60 +19,60 @@ import java.util.List;
 @Validated
 public class DataController {
 
-    private final ProductoService productoService;
-    private final CategoriaService categoriaService;
-    private final InventarioService inventarioService;
+  private final ProductoService productoService;
+  private final CategoriaService categoriaService;
+  private final InventarioService inventarioService;
 
-    public DataController(ProductoService productoService,
-                          CategoriaService categoriaService,
-                          InventarioService inventarioService) {
-        this.productoService = productoService;
-        this.categoriaService = categoriaService;
-        this.inventarioService = inventarioService;
-    }
+  public DataController(ProductoService productoService,
+                        CategoriaService categoriaService,
+                        InventarioService inventarioService) {
+    this.productoService = productoService;
+    this.categoriaService = categoriaService;
+    this.inventarioService = inventarioService;
+  }
 
-    // Productos
-    @GetMapping("/productos")
-    public List<Producto> obtenerTodosLosProductos() {
-        return productoService.obtenerTodos();
-    }
+  // --- Productos ---
+  @GetMapping("/productos")
+  public List<ProductoDTO> obtenerTodosLosProductos() {
+    return productoService.obtenerTodos();
+  }
 
-    @GetMapping("/productos/{id}")
-    public Producto obtenerProductoPorId(@PathVariable Long id) {
-        return productoService.buscarPorId(id);
-    }
+  @GetMapping("/productos/{id}")
+  public ProductoDTO obtenerProductoPorId(@PathVariable("id") Long id) {
+    return productoService.buscarPorId(id);
+  }
 
-    @PostMapping("/productos")
-    @ResponseStatus(HttpStatus.CREATED)
-    public Producto crearProducto(@Valid @RequestBody Producto producto) {
-        return productoService.guardar(producto);
-    }
+  @PostMapping("/productos")
+  @ResponseStatus(HttpStatus.CREATED)
+  public ProductoDTO crearProducto(@Valid @RequestBody ProductoRequest request) {
+    return productoService.guardar(request);
+  }
 
-    @PutMapping("/productos/{id}")
-    public Producto actualizarProducto(@PathVariable Long id, @Valid @RequestBody Producto producto) {
-        return productoService.actualizar(id, producto);
-    }
+  @PutMapping("/productos/{id}")
+  public ProductoDTO actualizarProducto(@PathVariable("id") Long id, @Valid @RequestBody ProductoRequest request) {
+    return productoService.actualizar(id, request);
+  }
 
-    @DeleteMapping("/productos/{id}")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void eliminarProducto(@PathVariable Long id) {
-        productoService.eliminar(id);
-    }
+  @DeleteMapping("/productos/{id}")
+  @ResponseStatus(HttpStatus.NO_CONTENT)
+  public void eliminarProducto(@PathVariable("id") Long id) {
+    productoService.eliminar(id);
+  }
 
-    @GetMapping("/productos/categoria/{nombre}")
-    public List<Producto> obtenerProductosPorCategoria(@PathVariable String nombre) {
-        return productoService.buscarPorCategoria(nombre);
-    }
+  @GetMapping("/productos/categoria/{nombre}")
+  public List<ProductoDTO> obtenerProductosPorCategoria(@PathVariable("nombre") String nombre) {
+    return productoService.buscarPorCategoria(nombre);
+  }
 
-    // Categorias
-    @GetMapping("/categorias")
-    public List<Categoria> obtenerTodasLasCategorias() {
-        return categoriaService.obtenerTodas();
-    }
+  // --- Categorias ---
+  @GetMapping("/categorias")
+  public List<CategoriaDTO> obtenerTodasLasCategorias() {
+    return categoriaService.obtenerTodas();
+  }
 
-    // Inventario
-    @GetMapping("/inventario/stock-bajo")
-    public List<Inventario> obtenerProductosConStockBajo() {
-        return inventarioService.obtenerProductosConStockBajo();
-    }
+  // --- Inventario ---
+  @GetMapping("/inventario/stock-bajo")
+  public List<InventarioDTO> obtenerProductosConStockBajo() {
+    return inventarioService.obtenerProductosConStockBajo();
+  }
 }
